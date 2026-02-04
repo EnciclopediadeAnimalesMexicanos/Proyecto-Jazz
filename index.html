@@ -162,12 +162,92 @@
         .btn-neon:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
 
         /* --- SECCIÓN 4: VINILOS --- */
-        .vinyl-wrapper { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 3rem; }
-        .vinyl-card { text-align: center; }
-        .record-container { position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; }
-        .cover { width: 100%; height: 100%; position: relative; z-index: 5; border: 1px solid var(--border-glass); }
-        .disc { width: 90%; height: 90%; background: radial-gradient(circle, #111, #222, #000); border-radius: 50%; position: absolute; top: 5%; left: 0; z-index: 1; transition: 0.7s; }
-        .vinyl-card:hover .disc { transform: translateX(60px) rotate(360deg); }
+/* --- SECCIÓN 4: VINILOS MEJORADOS --- */
+.vinyl-wrapper { 
+    display: flex; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    gap: 4rem; 
+    perspective: 1000px; 
+}
+
+.vinyl-card { 
+    text-align: center; 
+    transition: transform 0.3s ease;
+}
+
+.record-container { 
+    position: relative; 
+    width: 250px; 
+    height: 250px; 
+    margin: 0 auto 1.5rem; 
+}
+
+/* Portada con sombra profunda */
+.cover { 
+    width: 100%; 
+    height: 100%; 
+    position: relative; 
+    z-index: 10; 
+    border: 1px solid var(--border-glass); 
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* El Disco con texturizado y reflejo */
+.disc { 
+    width: 95%; 
+    height: 95%; 
+    background: 
+        radial-gradient(circle, #222 0%, #000 30%, #111 50%, #000 70%, #222 100%),
+        repeating-radial-gradient(rgba(255,255,255,0.05) 0px, transparent 1px, transparent 4px);
+    border-radius: 50%; 
+    position: absolute; 
+    top: 2.5%; 
+    left: 0; 
+    z-index: 1; 
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 0 10px #000, 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* Brillo del Vinilo */
+.disc::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+}
+
+/* Animación al pasar el mouse */
+.vinyl-card:hover .cover {
+    transform: translateX(-20px);
+}
+
+.vinyl-card:hover .disc { 
+    transform: translateX(100px) rotate(720deg); 
+}
+
+/* Botón de Spotify Estilo Neón */
+.spotify-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #1DB954;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.spotify-btn:hover {
+    background: #1ed760;
+    box-shadow: 0 0 15px #1ed760;
+    transform: scale(1.05);
+}
 
         /* --- SECCIÓN 5: PARTITURAS (LEGADO) --- */
         .sheet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -187,6 +267,61 @@
         .player-info { position: absolute; left: 30px; font-size: 0.7rem; color: var(--neon-green); text-transform: uppercase; letter-spacing: 1px; }
 
         footer { text-align: center; padding: 5rem; border-top: 1px solid var(--border-glass); opacity: 0.6; font-size: 0.8rem; }
+        /* --- NUEVOS ESTILOS DE SEMBLANZA --- */
+.bio-grid { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr; 
+    gap: 40px; 
+    align-items: start; 
+}
+.lead-text { 
+    font-size: 1.3rem; 
+    color: var(--neon-cyan); 
+    font-weight: 300; 
+    margin-bottom: 1.5rem; 
+}
+.activities { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 2rem; 
+}
+.act-item { 
+    border: 1px solid var(--neon-green); 
+    padding: 5px 15px; 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    color: var(--neon-green); 
+}
+.bio-stats { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+.stat-box { 
+    background: rgba(255,255,255,0.05); 
+    padding: 20px; 
+    text-align: center; 
+    border: 1px solid var(--border-glass); 
+}
+.stat-box span { 
+    display: block; 
+    font-size: 2.5rem; 
+    font-family: 'Playfair Display', serif; 
+    color: var(--neon-cyan); 
+    line-height: 1; 
+}
+.stat-box p { 
+    margin: 5px 0 0; 
+    font-size: 0.6rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    color: #888; 
+}
+
+@media (max-width: 768px) {
+    .bio-grid { grid-template-columns: 1fr; }
+}
     </style>
 </head>
 <body>
@@ -238,30 +373,35 @@
         <div class="hero-sub" style="color: var(--neon-cyan);">Alejandro Pérez Sáez</div>
     </header>
 
-    <section id="bio">
-        <div class="section-header"><h2>Musico y Maestro</h2></div>
-        <div class="portrait-container">
-            <img src="SRALE1.jpg" alt="Alejandro Pérez Sáez" class="main-portrait">
-            <div class="bio-text">
-                <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-                    Bajista fundador de <strong>Astillero</strong>, Alejandro Pérez Sáez Biografia        </p>
-                <div class="timeline">
-                    <div class="timeline-step">
-                        <div class="year">1954 – 2025</div>
-                        <p>Una vida dedicada a la música y la difusión cultural.</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="year">Astillero Jazz</div>
-                        <p>Fundación del ensamble pionero que rompió esquemas.</p>
-                    </div>
-                    <div class="timeline-step">
-                        <div class="year">Educador y Editor</div>
-                        <p>Formación de músicos y preservación de la historia musical.</p>
-                    </div>
-                </div>
+  <section id="bio">
+    <div class="section-header"><h2>El Maestro Detrás del Bajo</h2></div>
+    <div class="bio-grid">
+        <div class="bio-content">
+            <p class="lead-text">
+                Nacido en la Ciudad de México en 1954, Alejandro Pérez Sáez fue una figura central en la cultura musical del país.
+            </p>
+            <div class="activities">
+                <div class="act-item">Música</div>
+                <div class="act-item">Letras</div>
+                <div class="act-item">Pedagogía</div>
             </div>
+            <p>
+                Miembro del Sistema Nacional de Creadores de Arte, colaboró en 1978-1979 en la creación del libro <em>Historia Ilustrada de la Música Popular Mexicana</em>. En 1981 editó <em>Tiempo de madera</em>, su disco solista para guitarra y voz.
+            </p>
+            <p>
+                Como bajista fundador del cuarteto <strong>Astillero</strong>, lideró una agrupación que durante 27 años realizó cerca de 1,100 conciertos y 5 giras europeas.
+            </p>
+            <p>
+                En 2009 obtuvo la beca del FONCA con el proyecto <em>Tres poemas tonales para cuarteto de jazz</em>.
+            </p>
         </div>
-    </section>
+        <div class="bio-stats">
+            <div class="stat-box"><span>8</span><p>Discos Grabados</p></div>
+            <div class="stat-box"><span>8</span><p>Emisiones Cervantino</p></div>
+            <div class="stat-box"><span>1.1k</span><p>Conciertos Totales</p></div>
+        </div>
+    </div>
+</section>
 
     <section id="galeria">
         <div class="section-header"><h2>Archivo Visual (Collage)</h2></div>
@@ -295,10 +435,10 @@
         <div class="section-header"><h2>Ecos de su Trayectoria</h2></div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
             <blockquote>
-                "Su bajo no solo acompañaba; contaba historias con la profundidad de un verdadero visionario."
+                "Su bajo."
             </blockquote>
             <blockquote>
-                "Alejandro transformó la educación musical en una labor editorial de excelencia."
+                "Alejandro transformó la educación musical ."
             </blockquote>
         </div>
         <div style="text-align: center;">
@@ -315,8 +455,15 @@
                 <a href="https://open.spotify.com/intl-es/artist/6xFUhVjzXekQYlC7EowNfS?si=AA8RsjeVSDCuLdCmT9OlOQ#" class="spotify-btn">Spotify</a>
             </div>
             <div class="vinyl-card">
-                <div class="record-container"><img src="El sexto c.jpg" class="cover"><div class="disc"></div></div>
-                <h3>El Sexto Continente</h3>
+                <a href="sexto-continente.html" style="text-decoration: none; color: inherit;">
+    <div class="vinyl-card">
+        <div class="record-container">
+            <img src="El sexto c.jpg" class="cover">
+            <div class="disc"></div>
+        </div>
+        <h3>El Sexto Continente</h3>
+    </div>
+</a>
                 <a href="https://open.spotify.com/intl-es/album/3CHv95mSRoiNgJcVNfZad4?si=srZS2x3MTUy1-d_mFtac1Q#" class="spotify-btn">Spotify</a>
             </div>
         </div>

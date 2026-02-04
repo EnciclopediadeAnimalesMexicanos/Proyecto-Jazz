@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Sexto Continente | Memoria de Astillero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-red: #8b2d1a;
+            --deep-bg: #080808;
+            --text-muted: #a0a0a0;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--deep-bg);
+            color: #f4f4f4;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- ANIMACIÓN DE ENTRADA --- */
+        .fade-in { animation: fadeIn 1.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- NAVEGACIÓN --- */
+        .nav-minimal {
+            padding: 30px;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--accent-red);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover { color: #fff; }
+
+        /* --- HERO: EL ARTE Y EL ALMA --- */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            min-height: 90vh;
+            align-items: center;
+            padding: 0 8%;
+            gap: 60px;
+        }
+
+        .album-wrapper { position: relative; }
+        .album-frame {
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--border-subtle);
+            filter: grayscale(20%) contrast(1.1);
+            transition: 0.5s;
+        }
+        .album-wrapper:hover .album-frame { filter: grayscale(0%); box-shadow: 0 0 50px rgba(139, 45, 26, 0.3); }
+
+        .hero-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            margin: 10px 0;
+            line-height: 0.9;
+        }
+
+        .label-year { color: var(--accent-red); font-weight: 600; letter-spacing: 4px; }
+
+        /* --- SECCIÓN NARRATIVA (EL MÉXICO PROFUNDO) --- */
+        .narrative-section {
+            max-width: 900px;
+            margin: 100px auto;
+            padding: 60px 40px;
+            background: rgba(255,255,255,0.02);
+            border-left: 1px solid var(--accent-red);
+        }
+
+        .narrative-section h2 { font-family: 'Playfair Display', serif; font-style: italic; color: #fff; }
+        .quote-body { font-size: 1.15rem; color: var(--text-muted); font-weight: 300; }
+
+        /* --- LISTA DE OBRA (TRACKLIST) --- */
+        .track-grid {
+            max-width: 1100px;
+            margin: 0 auto 150px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 0 40px;
+        }
+
+        .disk-side h3 {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            color: var(--accent-red);
+        }
+
+        .track-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: 0.3s;
+        }
+
+        .track-item:hover { transform: translateX(10px); color: var(--accent-red); }
+
+        .composer { display: block; font-size: 0.65rem; opacity: 0.5; text-transform: uppercase; }
+
+        /* --- CRÉDITOS --- */
+        .credits {
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .hero-section { grid-template-columns: 1fr; padding-top: 120px; }
+            .track-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-minimal">
+        <a href="index.html" class="btn-back">← Volver al Archivo</a>
+    </nav>
+
+    <section class="hero-section fade-in">
+        <div class="album-wrapper">
+            <img src="El sexto c.jpg" alt="Astillero - El Sexto Continente" class="album-frame">
+        </div>
+        <div class="hero-info">
+            <span class="label-year">1991 / MÉXICO</span>
+            <h1>El sexto continente</h1>
+            <p style="font-size: 1.2rem; font-weight: 300; opacity: 0.8;">
+                Una obra dedicada al "México profundo".
+            </p>
+        </div>
+    </section>
+
+    <section class="narrative-section fade-in">
+        <h2>Un cambio de lenguaje</h2>
+        <p class="quote-body">
+            "Este disco representa un cambio instrumental significativo. Con una atmósfera mexicanista, abordamos por primera vez la improvisación libre, permitiendo que el color tímbrico se enriqueciera y los espacios para crear se ampliaran considerablemente".
+            <br><br>
+            <small>— Alejandro Pérez-Sáez (2011)</small>
+        </p>
+    </section>
+
+    <div class="track-grid fade-in">
+        <div class="disk-side">
+            <h3>Disco 1 / Lado A & B</h3>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Barlovento</span>
+                    <span class="composer">Comp. Alejandro Pérez-Sáez</span>
+                </div>
+                <span>9:13</span>
+            </div>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Rojo y siena</span>
+                    <span class="composer">Comp. Pablo Anguiano</span>
+                </div>
+                <span>4:56</span>
+            </div>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Sofía en Sol</span>
+                    <span class="composer">Comp. Pablo Anguiano</span>
+                </div>
+                <span>11:26</span>
+            </div>
+        </div>
+
+        <div class="disk-side">
+            <h3>Disco 2 / Lado A & B</h3>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Mulata</span>
+                    <span class="composer">Comp. Pablo Anguiano</span>
+                </div>
+                <span>10:15</span>
+            </div>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Aislamiento</span>
+                    <span class="composer">Comp. Pablo Anguiano</span>
+                </div>
+                <span>7:46</span>
+            </div>
+            <div class="track-item">
+                <div>
+                    <span class="track-title">Tañe tu atabal</span>
+                    <span class="composer">Comp. Pablo Anguiano</span>
+                </div>
+                <span>—</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="credits">
+        <p><strong>MÚSICOS:</strong> Alejandro Pérez-Sáez (Bajo) • Pablo Anguiano (Batería) • Manuel Carlos (Alientos) • Bert van der Veen (Piano)</p>
+        <p>Arreglos: Astillero • Fuente: 2 x LP Original (1991), Trópico de Jazz [ARO-1005]</p>
+    </footer>
+
+</body>
+</html>
